@@ -8,10 +8,9 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cryptohooker.adapters.MoviesItemAdapter
 import com.example.cryptohooker.base.BaseFragment
-import com.example.cryptohooker.core.extensions.replaceFragment
 import com.example.cryptohooker.core.extensions.showToastMsg
 import com.example.cryptohooker.databinding.FragmentHomeBinding
-import com.example.cryptohooker.ui.details.DetailsFragment
+import com.example.cryptohooker.databinding.FragmentMoviesBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -23,14 +22,14 @@ import dagger.hilt.android.AndroidEntryPoint
 class MoviesFragment : BaseFragment() {
 
     private val viewModel: MoviesViewModel by viewModels()
-    private lateinit var binding: FragmentHomeBinding
+    private lateinit var binding: FragmentMoviesBinding
     private lateinit var moviesItemAdapter: MoviesItemAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        binding = FragmentMoviesBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -40,7 +39,8 @@ class MoviesFragment : BaseFragment() {
             it.onMovieItemSelectionListener { movieModel ->
                 showToastMsg(movieModel.movieTitle)
             }
-            it.stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
+            it.stateRestorationPolicy =
+                RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
             binding.productRecyclerView.adapter = it
         }
 
