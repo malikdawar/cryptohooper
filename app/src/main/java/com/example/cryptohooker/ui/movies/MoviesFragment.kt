@@ -6,11 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
+import com.example.cryptohooker.base.BaseFragment
+import com.example.cryptohooker.core.extensions.gone
+import com.example.cryptohooker.core.extensions.showToastMsg
+import com.example.cryptohooker.core.extensions.visible
+import com.example.cryptohooker.databinding.FragmentMoviesBinding
 import com.example.cryptohooker.ui.movies.adapters.PopularMoviesAdapter
 import com.example.cryptohooker.ui.movies.adapters.RecommendedMoviesAdapter
-import com.example.cryptohooker.base.BaseFragment
-import com.example.cryptohooker.core.extensions.showToastMsg
-import com.example.cryptohooker.databinding.FragmentMoviesBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -56,10 +58,14 @@ class MoviesFragment : BaseFragment() {
         viewModel.uiStateLiveData.observe(viewLifecycleOwner) { state ->
             when (state) {
                 is LoadingState -> {
+                    binding.layoutPopularMoviesControl.gone()
+                    binding.layoutRecommendedMoviesControl.gone()
                     progressDialog.show()
                 }
 
                 is ContentState -> {
+                    binding.layoutPopularMoviesControl.visible()
+                    binding.layoutRecommendedMoviesControl.visible()
                     progressDialog.dismiss()
                 }
 
