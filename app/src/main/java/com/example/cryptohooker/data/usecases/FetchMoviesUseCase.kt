@@ -4,7 +4,7 @@ import com.example.cryptohooker.data.repository.movies.MoviesRepository
 import javax.inject.Inject
 
 /**
- * A use-case to load the products from API.
+ * A use-case to load the Movies from API.
  * @author Malik Dawar
  */
 class FetchMoviesUseCase @Inject constructor(private val repository: MoviesRepository) {

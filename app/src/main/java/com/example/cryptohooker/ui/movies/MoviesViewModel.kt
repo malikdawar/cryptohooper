@@ -30,11 +30,11 @@ class MoviesViewModel @Inject constructor(
     var popularMoviesLiveData: MutableLiveData<List<MovieModel>> = MutableLiveData<List<MovieModel>>()
 
     init {
-        fetchProducts()
+        fetchMovies()
     }
 
     @SuppressLint("NullSafeMutableLiveData")
-    private fun fetchProducts() {
+    private fun fetchMovies() {
         _uiState.postValue(LoadingState)
 
         viewModelScope.launch {

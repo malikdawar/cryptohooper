@@ -50,7 +50,7 @@ class NetworkApiModule {
 
     @Singleton
     @Provides
-    fun providesProductApiService(okHttpClient: OkHttpClient): CryptoApiInterface {
+    fun providesCryptoApiService(okHttpClient: OkHttpClient): CryptoApiInterface {
         val retrofit = Retrofit.Builder()
             .baseUrl(Const.BASE_CRYPTO_API_URL)
             .client(okHttpClient)

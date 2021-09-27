@@ -45,6 +45,8 @@ class NewsFeedAdapter :
                 itemNewsTextUserName.text = newsFeedModel.userFullName
                 itemNewsTextPostDate.text = newsFeedModel.createdAt
                 itemNewsTextPostDescription.text = newsFeedModel.postMessage
+                itemTextNewsLikes.text = newsFeedModel.likeCount.toString()
+                itemTextNewsComments.text = newsFeedModel.commentCount.toString()
             }
         }
     }
