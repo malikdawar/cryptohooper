@@ -23,7 +23,7 @@ class ApiServiceTest : ApiAbstract<CryptoApiInterface>() {
 
     @Throws(IOException::class)
     @Test
-    fun `given ApiInterface when the getNewsFeedList is triggered then it returns the movies`() =
+    fun `given ApiInterface when the getNewsFeedList is triggered then it returns the news-feed`() =
         runBlocking {
             // Given
             enqueueResponse("news_feed_response_200.json")

@@ -4,10 +4,8 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.example.cryptohooker.data.DataState
 import com.example.cryptohooker.data.NewsFeedDataSource
-import com.example.cryptohooker.data.model.MovieModel
 import com.example.cryptohooker.data.model.NewsFeedModel
 import com.example.cryptohooker.data.usecases.FetchNewsFeedUseCase
-import com.example.cryptohooker.ui.movies.ContentState
 import com.example.cryptohooker.ui.newsfeed.NewsFeedUiState
 import com.example.cryptohooker.ui.newsfeed.NewsFeedViewModel
 import com.example.cryptohooker.utils.TestCoroutineRule
@@ -46,13 +44,13 @@ class NewsFeedViewModelTest {
     @Test
     fun `test when HomeViewModel is initialized, new posts-newsfeed are fetched`() = runBlocking {
         // Given
-        val givenMovies = NewsFeedDataSource.getNewsFeedList()
+        val givenNewsFeed = NewsFeedDataSource.getNewsFeedList()
         val uiObserver = mockk<Observer<NewsFeedUiState>>(relaxed = true)
         val newsListObserver = mockk<Observer<List<NewsFeedModel>>>(relaxed = true)
 
         // When
         coEvery { fetchNewsFeedUseCase.invoke() }
-            .returns(flowOf(DataState.success(givenMovies)))
+            .returns(flowOf(DataState.success(givenNewsFeed)))
 
         // Invoke
         sut = NewsFeedViewModel(fetchNewsFeedUseCase)
@@ -61,6 +59,6 @@ class NewsFeedViewModelTest {
 
         // Then
         coVerify(exactly = 1) { fetchNewsFeedUseCase.invoke() }
-        verify { newsListObserver.onChanged(match { it.size == givenMovies.size }) }
+        verify { newsListObserver.onChanged(match { it.size == givenNewsFeed.size }) }
     }
 }
