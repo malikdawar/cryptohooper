@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1,
+    "movieImage": "http://dummyimage.com/500x500.png/5fa2dd/ffffff",
+    "movieTitle": "Lorem ipsumTitle",
+    "movieYear": 2006,
+    "movieGenre": "Comedy",
+    "isPopular": true,
+    "isRecommended": true
+  }
+]

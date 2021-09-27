@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">CryptoHooper</string>
+    <string name="screen_home_title_str">Home</string>
+    <string name="message_no_network_connected_str">No network connected!</string>
+    <string name="message_something_went_wrong_str">Something went wrong!</string>
+    <string name="label_no_internet">No internet connection</string>
+    <string name="nav_movie">Movies</string>
+    <string name="nav_news_feed">News Feed</string>
+    <string name="label_movies">Movies</string>
+    <string name="dash">" - "</string>
+    <string name="recommended">Recommended</string>
+    <string name="for_you">For You</string>
+    <string name="view_all">View All</string>
+    <string name="popular">Popular</string>
+    <string name="discover">Discover</string>
+    <string name="label_stories">Stories</string>
+    <string name="archive_all">Archive All</string>
+    <string name="view_archive">View Archive</string>
+</resources>

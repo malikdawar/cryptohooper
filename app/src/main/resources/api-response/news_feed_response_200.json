@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "userFullName": "Lorem ipsum",
+    "userImageUrl": "http://dummyimage.com/500x500.png/ff4444/ffffff",
+    "createdAt": "Sept 2021, 12:23pm",
+    "likeCount": 233,
+    "commentCount": 233,
+    "postImage": "http://dummyimage.com/500x500.png/ff4444/ffffff",
+    "postMessage": "Lorem ipsum is the best site to get thet dihskiyd ilhoi hoiuk"
+  }
+]
