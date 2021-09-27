@@ -22,8 +22,8 @@ class NewsFeedViewModel @Inject constructor(
     private var _newsFeedListModel = MutableLiveData<List<NewsFeedModel>>()
     var newsFeedModelLiveData: LiveData<List<NewsFeedModel>> = _newsFeedListModel
 
-    private var _uiState = MutableLiveData<DetailsUiState>()
-    var uiStateLiveData: LiveData<DetailsUiState> = _uiState
+    private var _uiState = MutableLiveData<NewsFeedUiState>()
+    var uiStateLiveData: LiveData<NewsFeedUiState> = _uiState
 
     init {
         fetchNewsFeeds()

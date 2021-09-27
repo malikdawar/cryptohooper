@@ -5,9 +5,9 @@ import com.example.cryptohooker.data.model.MovieModel
 object MoviesDataSource {
 
     fun getMovieList(): ArrayList<MovieModel> {
-        val productList = ArrayList<MovieModel>()
-        productList.add(movieModel)
-        return productList
+        val movieList = ArrayList<MovieModel>()
+        movieList.add(movieModel)
+        return movieList
     }
 
     private val movieModel: MovieModel

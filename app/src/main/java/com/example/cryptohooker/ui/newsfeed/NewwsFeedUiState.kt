@@ -1,7 +1,7 @@
 package com.example.cryptohooker.ui.newsfeed
 
-sealed class DetailsUiState
+sealed class NewsFeedUiState
 
-object LoadingState : DetailsUiState()
-object ContentState : DetailsUiState()
-class ErrorState(val message: String) : DetailsUiState()
+object LoadingState : NewsFeedUiState()
+object ContentState : NewsFeedUiState()
+class ErrorState(val message: String) : NewsFeedUiState()

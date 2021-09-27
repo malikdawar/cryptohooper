@@ -30,30 +30,31 @@ class FetchMoviesUseCaseTest {
     }
 
     @Test
-    fun `given when the invoke in FetchMoviesUseCase is called then it fetch the movies`() = runBlocking {
-        // Given
-        val sut = FetchMoviesUseCase(repository)
-        val givenProducts = MoviesDataSource.getMovieList()
+    fun `given when the invoke in FetchMoviesUseCase is called then it fetch the movies`() =
+        runBlocking {
+            // Given
+            val sut = FetchMoviesUseCase(repository)
+            val givenMovies = MoviesDataSource.getMovieList()
 
-        // When
-        coEvery { repository.fetchMovieList() }
-            .returns(flowOf(DataState.success(givenProducts)))
+            // When
+            coEvery { repository.fetchMovieList() }
+                .returns(flowOf(DataState.success(givenMovies)))
 
-        // Invoke
-        val movieListFlow = sut()
+            // Invoke
+            val movieListFlow = sut()
 
-        // Then
-        MatcherAssert.assertThat(movieListFlow, CoreMatchers.notNullValue())
+            // Then
+            MatcherAssert.assertThat(movieListFlow, CoreMatchers.notNullValue())
 
-        val movieListDataState = movieListFlow.first()
-        MatcherAssert.assertThat(movieListDataState, CoreMatchers.notNullValue())
-        MatcherAssert.assertThat(
-            movieListDataState,
-            CoreMatchers.instanceOf(DataState.Success::class.java)
-        )
+            val movieListDataState = movieListFlow.first()
+            MatcherAssert.assertThat(movieListDataState, CoreMatchers.notNullValue())
+            MatcherAssert.assertThat(
+                movieListDataState,
+                CoreMatchers.instanceOf(DataState.Success::class.java)
+            )
 
-        val movieList = (movieListDataState as DataState.Success).data
-        MatcherAssert.assertThat(movieList, CoreMatchers.notNullValue())
-        MatcherAssert.assertThat(movieList.size, `is`(givenProducts.size))
-    }
+            val movieList = (movieListDataState as DataState.Success).data
+            MatcherAssert.assertThat(movieList, CoreMatchers.notNullValue())
+            MatcherAssert.assertThat(movieList.size, `is`(givenMovies.size))
+        }
 }
