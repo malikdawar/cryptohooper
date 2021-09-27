@@ -1,8 +1,8 @@
 package com.example.cryptohooker.di
 
-import com.example.cryptohooker.data.remote.ApiInterface
-import com.example.cryptohooker.data.repository.movie.MoviesRepository
-import com.example.cryptohooker.data.repository.movie.MoviesRepositoryImpl
+import com.example.cryptohooker.data.remote.apiservice.CryptoApiInterface
+import com.example.cryptohooker.data.repository.movies.MoviesRepository
+import com.example.cryptohooker.data.repository.movies.MoviesRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,7 +19,7 @@ class RepositoryModule {
 
     @Singleton
     @Provides
-    fun providePhotosRepository(apiService: ApiInterface): MoviesRepository {
-        return MoviesRepositoryImpl(apiService)
+    fun provideProductRepository(cryptoApiService: CryptoApiInterface): MoviesRepository {
+        return MoviesRepositoryImpl(cryptoApiService)
     }
 }

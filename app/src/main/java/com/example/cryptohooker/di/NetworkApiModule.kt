@@ -2,7 +2,7 @@ package com.example.cryptohooker.di
 
 import com.example.cryptohooker.core.utils.Const
 import com.example.cryptohooker.core.utils.Const.REQUEST_TIMEOUT
-import com.example.cryptohooker.data.remote.ApiInterface
+import com.example.cryptohooker.data.remote.apiservice.CryptoApiInterface
 import com.example.cryptohooker.data.remote.ApiResponseCallAdapterFactory
 import dagger.Module
 import dagger.Provides
@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 /**
- * The Dagger Module to provide the instances of [OkHttpClient], [Retrofit], and [ApiInterface] classes.
+ * The Dagger Module to provide the instances of [OkHttpClient], [Retrofit], and [CryptoApiInterface] classes.
  * @author Malik Dawar
  */
 @Module
@@ -50,18 +50,14 @@ class NetworkApiModule {
 
     @Singleton
     @Provides
-    fun providesRetrofit(okHttpClient: OkHttpClient): Retrofit {
-        return Retrofit.Builder()
-            .baseUrl(Const.BASE_API_URL)
+    fun providesProductApiService(okHttpClient: OkHttpClient): CryptoApiInterface {
+        val retrofit = Retrofit.Builder()
+            .baseUrl(Const.BASE_API_URL_PRODUCT)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(ApiResponseCallAdapterFactory())
             .build()
-    }
 
-    @Singleton
-    @Provides
-    fun providesApiService(retrofit: Retrofit): ApiInterface {
-        return retrofit.create(ApiInterface::class.java)
+        return retrofit.create(CryptoApiInterface::class.java)
     }
 }

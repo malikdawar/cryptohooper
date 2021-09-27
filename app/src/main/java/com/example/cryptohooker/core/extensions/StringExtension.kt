@@ -3,7 +3,6 @@ package com.example.cryptohooker.core.extensions
 import com.example.cryptohooker.App
 import com.example.cryptohooker.R
 
-
 /**
  * Extension function to noNetworkErrorMessage
  * @author Dawar Malik.

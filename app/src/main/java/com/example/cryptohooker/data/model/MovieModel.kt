@@ -6,10 +6,11 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class MovieModel(
-    @Expose val id: String,
-    @Expose val author: String,
-    @Expose val width: Long,
-    @Expose val height: Long,
-    @Expose val url: String,
-    @Expose val download_url: String,
+    @Expose val id: Int,
+    @Expose val movieImage: String,
+    @Expose val movieYear: Int,
+    @Expose val movieGenre: String,
+    @Expose val isRecommended: Boolean,
+    @Expose val isPopular: Boolean,
+    @Expose val movieTitle: String
 ) : Parcelable
