@@ -6,6 +6,7 @@ import com.example.cryptohooker.base.BaseActivity
 import com.example.cryptohooker.core.extensions.replaceFragmentSafely
 import com.example.cryptohooker.databinding.ActivityMainBinding
 import com.example.cryptohooker.ui.movies.MoviesFragment
+import com.example.cryptohooker.ui.newsfeed.NewsFeedFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -38,7 +39,7 @@ class MainActivity : BaseActivity() {
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.nav_news_feed -> {
-
+                    replaceFragmentSafely(NewsFeedFragment())
                     return@OnNavigationItemSelectedListener true
                 }
             }

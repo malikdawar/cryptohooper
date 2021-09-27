@@ -1,4 +1,4 @@
-package com.example.cryptohooker.adapters
+package com.example.cryptohooker.ui.movies.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

@@ -1,4 +1,4 @@
-package com.example.cryptohooker.adapters
+package com.example.cryptohooker.ui.movies.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,17 +10,12 @@ import com.example.cryptohooker.databinding.RowItemPopularMovieBinding
 class PopularMoviesAdapter :
     RecyclerView.Adapter<PopularMoviesAdapter.MovieViewHolder>() {
 
-    lateinit var onMovieItemSelected: (MovieModel) -> Unit
     private val movieItems: ArrayList<MovieModel> = arrayListOf()
 
     fun setItems(movies: List<MovieModel>) {
         movieItems.clear()
         movieItems.addAll(movies)
         notifyDataSetChanged()
-    }
-
-    fun onMovieItemSelectionListener(listener: (MovieModel) -> Unit) {
-        onMovieItemSelected = listener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {

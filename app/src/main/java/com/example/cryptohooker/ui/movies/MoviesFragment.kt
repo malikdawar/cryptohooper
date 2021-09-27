@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cryptohooker.adapters.PopularMoviesAdapter
-import com.example.cryptohooker.adapters.RecommendedMoviesAdapter
+import com.example.cryptohooker.ui.movies.adapters.PopularMoviesAdapter
+import com.example.cryptohooker.ui.movies.adapters.RecommendedMoviesAdapter
 import com.example.cryptohooker.base.BaseFragment
 import com.example.cryptohooker.core.extensions.showToastMsg
 import com.example.cryptohooker.databinding.FragmentMoviesBinding
