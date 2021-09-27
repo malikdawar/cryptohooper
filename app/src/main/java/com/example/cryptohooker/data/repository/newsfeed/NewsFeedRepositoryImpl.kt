@@ -17,14 +17,14 @@ import javax.inject.Inject
  * @author Malik Dawar
  */
 class NewsFeedRepositoryImpl @Inject constructor(
-    private val reviewApiInterface: CryptoApiInterface
+    private val cryptoApiInterface: CryptoApiInterface
 ) : NewsFeedRepository {
 
     @WorkerThread
     override suspend fun fetchNewsFeedList():
             Flow<DataState<ArrayList<NewsFeedModel>>> {
         return flow {
-            reviewApiInterface.getNewsFeedList().apply {
+            cryptoApiInterface.getNewsFeedList().apply {
                 this.onSuccessSuspend {
                     data?.let {
                         emit(DataState.success(it))
