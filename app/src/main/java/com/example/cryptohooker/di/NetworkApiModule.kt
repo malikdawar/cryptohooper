@@ -52,7 +52,7 @@ class NetworkApiModule {
     @Provides
     fun providesProductApiService(okHttpClient: OkHttpClient): CryptoApiInterface {
         val retrofit = Retrofit.Builder()
-            .baseUrl(Const.BASE_API_URL_PRODUCT)
+            .baseUrl(Const.BASE_CRYPTO_API_URL)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(ApiResponseCallAdapterFactory())

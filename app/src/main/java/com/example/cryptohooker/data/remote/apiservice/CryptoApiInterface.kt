@@ -11,7 +11,7 @@ interface CryptoApiInterface {
     suspend fun getMovieList(): ApiResponse<ArrayList<MovieModel>>
 
     @GET(GET_NEWS_FEED)
-    suspend fun getNewsFeed(): ApiResponse<ArrayList<NewsFeedModel>>
+    suspend fun getNewsFeedList(): ApiResponse<ArrayList<NewsFeedModel>>
 
     companion object {
         const val GET_MOVIES = "v2/5dea8d843000001d442b09da"
