@@ -1,4 +1,4 @@
-package com.example.cryptohooker.ui.home
+package com.example.cryptohooker.ui.movies
 
 import android.annotation.SuppressLint
 import androidx.lifecycle.LiveData

@@ -5,7 +5,7 @@ import com.example.cryptohooker.R
 import com.example.cryptohooker.base.BaseActivity
 import com.example.cryptohooker.core.extensions.replaceFragmentSafely
 import com.example.cryptohooker.databinding.ActivityMainBinding
-import com.example.cryptohooker.ui.home.MoviesFragment
+import com.example.cryptohooker.ui.movies.MoviesFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 

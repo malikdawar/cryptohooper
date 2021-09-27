@@ -1,4 +1,4 @@
-package com.example.cryptohooker.ui.home
+package com.example.cryptohooker.ui.movies
 
 sealed class MovieUiState
 

@@ -3,11 +3,12 @@ package com.example.cryptohooker.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.cryptohooker.core.utils.load
 import com.example.cryptohooker.data.model.MovieModel
-import com.example.cryptohooker.databinding.RowItemMovieBinding
+import com.example.cryptohooker.databinding.RowItemPopularMovieBinding
 
-class MoviesItemAdapter :
-    RecyclerView.Adapter<MoviesItemAdapter.MovieViewHolder>() {
+class PopularMoviesAdapter :
+    RecyclerView.Adapter<PopularMoviesAdapter.MovieViewHolder>() {
 
     lateinit var onMovieItemSelected: (MovieModel) -> Unit
     private val movieItems: ArrayList<MovieModel> = arrayListOf()
@@ -23,7 +24,7 @@ class MoviesItemAdapter :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
-        val binding = RowItemMovieBinding.inflate(
+        val binding = RowItemPopularMovieBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
@@ -37,12 +38,14 @@ class MoviesItemAdapter :
 
     override fun getItemCount() = movieItems.size
 
-    inner class MovieViewHolder(private val rowItemMovieBinding: RowItemMovieBinding) :
-        RecyclerView.ViewHolder(rowItemMovieBinding.root) {
+    inner class MovieViewHolder(private val rowItemPopularMovieBinding: RowItemPopularMovieBinding) :
+        RecyclerView.ViewHolder(rowItemPopularMovieBinding.root) {
 
         fun bind(movieModel: MovieModel) {
-            rowItemMovieBinding.apply {
-
+            rowItemPopularMovieBinding.apply {
+                itemImgViewMoviePoster.load(movieModel.movieImage)
+                itemTextMovieTitle.text = movieModel.movieTitle
+                itemTextMovieTimeDetails.text = "${movieModel.movieYear}"
             }
         }
     }

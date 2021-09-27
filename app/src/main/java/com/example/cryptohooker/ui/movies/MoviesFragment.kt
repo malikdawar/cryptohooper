@@ -1,4 +1,4 @@
-package com.example.cryptohooker.ui.home
+package com.example.cryptohooker.ui.movies
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,10 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cryptohooker.adapters.MoviesItemAdapter
+import com.example.cryptohooker.adapters.PopularMoviesAdapter
+import com.example.cryptohooker.adapters.RecommendedMoviesAdapter
 import com.example.cryptohooker.base.BaseFragment
 import com.example.cryptohooker.core.extensions.showToastMsg
-import com.example.cryptohooker.databinding.FragmentHomeBinding
 import com.example.cryptohooker.databinding.FragmentMoviesBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -23,7 +23,8 @@ class MoviesFragment : BaseFragment() {
 
     private val viewModel: MoviesViewModel by viewModels()
     private lateinit var binding: FragmentMoviesBinding
-    private lateinit var moviesItemAdapter: MoviesItemAdapter
+    private lateinit var recommendedRecommendedMoviesAdapter: RecommendedMoviesAdapter
+    private lateinit var popularMoviesAdapter: PopularMoviesAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,13 +36,17 @@ class MoviesFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        moviesItemAdapter = MoviesItemAdapter().also {
+        recommendedRecommendedMoviesAdapter = RecommendedMoviesAdapter().also {
             it.onMovieItemSelectionListener { movieModel ->
                 showToastMsg(movieModel.movieTitle)
             }
             it.stateRestorationPolicy =
                 RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
-            binding.productRecyclerView.adapter = it
+            binding.rvRecommendedMovies.adapter = it
+        }
+
+        popularMoviesAdapter = PopularMoviesAdapter().also {
+            binding.rvPopularMovies.adapter = it
         }
 
         initObservations()
@@ -66,7 +71,11 @@ class MoviesFragment : BaseFragment() {
         }
 
         viewModel.recommendedMoviesLiveData.observe(viewLifecycleOwner) { movies ->
-            moviesItemAdapter.setItems(movies)
+            recommendedRecommendedMoviesAdapter.setItems(movies)
+        }
+
+        viewModel.popularMoviesLiveData.observe(viewLifecycleOwner) { movies ->
+            popularMoviesAdapter.setItems(movies)
         }
     }
 }
