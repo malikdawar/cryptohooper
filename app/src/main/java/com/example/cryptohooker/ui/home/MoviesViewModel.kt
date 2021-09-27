@@ -1,7 +1,10 @@
 package com.example.cryptohooker.ui.home
 
 import android.annotation.SuppressLint
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.cryptohooker.data.DataState
 import com.example.cryptohooker.data.model.MovieModel
 import com.example.cryptohooker.data.usecases.FetchMoviesUseCase
@@ -16,15 +19,15 @@ import javax.inject.Inject
  */
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(
+class MoviesViewModel @Inject constructor(
     private val fetchMoviesUseCase: FetchMoviesUseCase
 ) : ViewModel() {
 
-    private var _uiState = MutableLiveData<HomeUiState>()
-    var uiStateLiveData: LiveData<HomeUiState> = _uiState
+    private var _uiState = MutableLiveData<MovieUiState>()
+    var uiStateLiveData: LiveData<MovieUiState> = _uiState
 
-    private var _movieList = MutableLiveData<List<MovieModel>>()
-    var movieModelLiveData: LiveData<List<MovieModel>> = _movieList
+    var recommendedMoviesLiveData: MutableLiveData<List<MovieModel>> = MutableLiveData<List<MovieModel>>()
+    var popularMoviesLiveData: MutableLiveData<List<MovieModel>> = MutableLiveData<List<MovieModel>>()
 
     init {
         fetchProducts()
@@ -38,8 +41,7 @@ class HomeViewModel @Inject constructor(
             fetchMoviesUseCase.invoke().collect { dataState ->
                 when (dataState) {
                     is DataState.Success -> {
-                        _uiState.postValue(ContentState)
-                        _movieList.postValue(dataState.data)
+                        getFilteredMovies(dataState.data)
                     }
 
                     is DataState.Error -> {
@@ -48,5 +50,21 @@ class HomeViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    private fun getFilteredMovies(movies: List<MovieModel>) {
+        val popularMovies: MutableList<MovieModel> = ArrayList()
+        val recommendedMovies: MutableList<MovieModel> = ArrayList()
+
+        movies.forEach {
+            if (it.isPopular)
+                popularMovies.add(it)
+            if (it.isRecommended)
+                recommendedMovies.add(it)
+        }
+
+        _uiState.postValue(ContentState)
+        recommendedMoviesLiveData.value = recommendedMovies
+        popularMoviesLiveData.value = popularMovies
     }
 }

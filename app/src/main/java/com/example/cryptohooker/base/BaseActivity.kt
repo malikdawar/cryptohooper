@@ -2,6 +2,8 @@ package com.example.cryptohooker.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.cryptohooker.core.extensions.gone
+import com.example.cryptohooker.core.extensions.visible
 import com.example.cryptohooker.core.utils.InternetMonitor
 import com.example.cryptohooker.databinding.UiInternetMonitorBinding
 
